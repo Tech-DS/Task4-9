@@ -1,0 +1,28 @@
+<h2>User info</h2>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+ <h5>name</h5>
+  <%= @user.name %>
+ <h5>introduction</h5>
+  <%= @user.introduction%>
+ <%= link_to"setting",edit_user_path(@user.id) %>
+ 
+ <%= form_for(@book,  url: books_path) do |f| %>
+  <h2>New book</h2>
+   <h4>Title</h4>
+    <%= f.text_field :title  %>
+   <h4>Opinipn</h4>
+    <%= f.text_field :body %>
+   <nav>
+    <%= f.submit 'Create Book' %>
+   </nav>
+ <% end %>
+
+
+<h2>Users</h2>
+　<table>
+　  <% @users.each do |user| %>
+　   <th><%= user.name %><th>
+　    <th><%= link_to"Show",user_path(user.id) %></th>
+　    </tr>
+　  <% end %> 
+　</table>
