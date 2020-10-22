@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Editing Book</h1>
  <%= form_for(@book, url: book_path(@book.id)) do |f| %>
    <h4>Title</h4>
@@ -8,5 +9,11 @@
      <%= f.submit 'Update Book' %>
    </nav>
   <% end %>
-  <%= link_to "show",book_path(@book.id)%>
+  
+  <div class="error">
+  <%= render 'books/error', book: @book %>
+  </div>
+  
+  <%= link_to "Show",book_path(@book.id)%>
   <%= link_to "Back",books_path %>
+ </div>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
+  before_action :authenticate_user!
+  before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
   
   
  def show
@@ -44,6 +44,11 @@ private
  def user_params
     params.require(:user).permit(:name,:profile_image,:introduction)
  end
-
+ def ensure_current_user
+     @user = User.find(params[:id])
+   if @user.id != current_user.id
+      redirect_to user_path(current_user.id)
+   end
+ end
 end
  
