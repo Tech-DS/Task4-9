@@ -21,8 +21,8 @@ before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
  
  def show
     @book_new = Book.new
-    @user = current_user
     @book = Book.find(params[:id])
+    @user = @book.user
  end
  
  def index
